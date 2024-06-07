@@ -1,0 +1,17 @@
+<script>
+        function generateTable() {
+            var number = document.getElementById("numberInput").value;
+
+            // Sending the number to a backend activity using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "backend_activity.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Displaying the generated table
+                    document.getElementById("tableContainer").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send("number=" + number);
+        }
+    </script>
